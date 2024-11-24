@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Antique+Soft&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500;600;700&family=Zen+Antique+Soft&display=swap');
+
+body,html {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	background: black;
+}
+
+body {
+	display: flex;
+}
+
+* {
+	font-family: "Zen Antique Soft", sans-serif;
+}
+
+h1-title {
+	display: block;
+	text-align: center;
+}
+
+h1-title > h1 > span {
+	margin: 0 30px;
+	font-family: 'Cormorant SC', sans-serif;
+	transition: all 1s ease-in-out;
+}
+
+h1-title:hover > h1 > span {
+	margin: 0 10px;
+}
+
+h1 {
+	letter-spacing: 10px;
+	font-size: 65px;
+}
+
+h2 {
+	letter-spacing: 8px;
+	font-size: 35px;
+}
+
+h1,h2,h3,h4 {
+	text-align: center;
+	letter-spacing: 5px;
+	font-family: "Cormorant SC", sans-serif;
+	text-shadow:
+		0 0 15px white,
+		0 0 10px white;
+}
+
+app {
+	transition: all .1s ease;
+	display: block;
+	position: relative;
+	background-color: black;
+	color: white;
+	background-size: cover;
+	background-repeat: no-repeat;
+	width: 100vw;
+	margin: auto;
+	height: calc(900vw/16);
+}
+
+.menu-selector {
+	display: flex;
+	width: 100%;
+}
+
+.menu-selector button {
+	width: 100%;
+	margin: 15px !important;
+	padding: 50px;
+}
+
+button {
+	border: none;
+	padding: 10px;
+	background: #00000060;
+	transition: all .3s ease;
+	border-radius: 5px;
+	font-size: 25px;
+	color: white;
+	outline: none;
+	backdrop-filter: blur(5px);
+}
+
+button:not(.inverted):not(.cancel):hover {
+	background: #ffffff30;
+	box-shadow: 0 5px 15px 10px rgba(255, 255, 255, .1);
+	transform: translateY(-10px);
+}
+
+button.inverted {
+	background: #ffffff30;
+}
+
+button.inverted:hover {
+	background: #ffffff60;
+}
+
+input,select {
+	background: #ffffff30;
+	outline: none;
+	border: solid 1px white;
+	padding: 10px;
+	border-radius: 5px;
+	color: white;
+}
+
+input[type='checkbox'] {
+	accent-color: black;
+}
+
+.menu-config {
+	padding: 5px;
+	text-align: center;
+	background: #00000060;
+	border-radius: 5px;
+	width: calc(100% - 40px);
+	margin: 15px;
+	height: 250px;
+	backdrop-filter: blur(5px);
+}
+
+credits {
+	position: absolute;
+	opacity: .7;
+	bottom: 15px;
+	right: 15px;
+}
+
+
+.toplevel {
+	color: white;
+	position: fixed;
+	left:20%;
+	top:15%;
+	right:20%;
+	bottom:15%;
+	background: #000000a0;
+	border-radius: 15px;
+	backdrop-filter: blur(10px);
+	height: 70%;
+	width: 60%;
+}
+
+.cancel {
+	background: transparent; !important;
+	right: -20px;
+	top: -40px;
+	font-size: 35px;
+	position: absolute;
+	backdrop-filter: none;
+}
+
+.cancel:hover {
+	transform: scale(1.3);
+}
+
+.txt-container {
+    font-size: 17px;
+    padding: 10px;
+    width: calc(100% - 40px);
+    backdrop-filter: blur(5px);
+    background: #000000e0;
+    height: calc(30% - 20px);
+    border-radius: 0px 5px 5px 5px;
+    margin: 5px;
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    white-space: normal;
+    overflow-wrap: break-word;
+}
+
+.txt-container > div {
+}
+
+.name-container {
+    font-size: 20px;
+    width: 200px;
+    background: #000000e0;
+    height: 50px;
+    margin: 5px;
+    left: 5px;
+    bottom: calc(30% + 5px);
+    position: absolute;
+    border-radius: 5px 5px 0 0;
+    display: flex;
+}
+
+.name-container > span {
+	margin: auto;
+}
+
+@keyframes nxt-btn {
+	0% {
+		height: 50px;
+	} 17.5% {
+		height: 80px;
+	} 35% {
+		height: 50px;
+	} 52.5% {
+		height: 80px;
+	} 70% {
+		height: 50px;
+	}
+}
+
+.nxt-btn {
+    width: 25px;
+    height: 50px;
+    background: url(down-arrow.svg);
+    background-size: contain;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 15px;
+    bottom: 0;
+    opacity: .6;
+    animation: nxt-btn 3.5s infinite ease;
+    transition: all .5s ease;
+}
+
+.nxt-btn:hover {
+	opacity: 1;
+}
+
+.nxt-btn.disabled {
+	opacity: 0;
+	pointer-events: none;
+}
+
+option {
+	color: black;
+}
+
+
+
+.choicediv {
+    position: absolute;
+    width: 70%;
+    left: 15%;
+    top: 10px;
+}
+
+button.choice, button.choice > span {
+    width: calc(100% - 60px);
+    border-radius: 0;
+    background: none;
+    box-shadow: none !important;
+    transition: all .5s ease !important;
+}
+
+button.choice {
+	background: #00000060;
+	margin: 0 auto;
+	cursor: pointer;
+}
+
+button.choice:hover {
+    transform: none !important;
+    border-radius: 5px;
+    padding: 10px 60px;
+    width: 100%;
+}
+
+.choicediv {
+    position: absolute;
+    width: 70%;
+    left: 15%;
+    top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}

@@ -1,0 +1,5 @@
+1. Poder hacer skip (o hacer que puedas continuar con espacio o enter)
+	Parte 1                                 [HECHO]
+	Hacer el texto más rápido opcionalmente [     ]
+
+2. Haz más fácil el sistema de condiciones
