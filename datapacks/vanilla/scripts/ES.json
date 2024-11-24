@@ -1,0 +1,256 @@
+[
+    "!background('placeholder.jpg')",
+    {
+        ".type":"CONDITION",
+        ".condition":"'get{default.player.gender}'==='Male'",
+        ".true":[
+            "!set('player.gender.el_la';'el')",
+            "!set('player.gender.el_ella';'él')",
+            "!set('player.gender.o_a';'o')"
+        ],
+        ".false":[
+            "!set('player.gender.el_la';'la')",
+            "!set('player.gender.el_ella';'ella')",
+            "!set('player.gender.o_a';'a')"
+        ]
+    },
+    ["???", "Un golpe, un grito ahogado de dolor en la distancia, y después, silencio absoluto."],
+    ["???", "Día 1."],
+    ["get{default.player.name}", "¡¿En serio, pongo la televisión y me llaman?!"],
+    ["get{default.player.name}", "Puf…"],
+    ["get{default.player.name}", "¿Sí?"],
+    [". . .", ""],
+    ["get{default.player.name}", "Ya…"],
+    [". . .", ""],
+    ["get{default.player.name}", "Pero…"],
+    [". . .", ""],
+    ["get{default.player.name}", "¿Qué?"],
+    [". . .", ""],
+    ["get{default.player.name}", "Ok, te veo en la escena del crímen."],
+    ["???","Pasaron algunos minutos hasta que esos dos inocentes se encontraron en una calle llena de cinta policial."],
+    ["get{default.player.name}", "Uf, no he podido procesar toda la información por teléfono. ¿Puedes repetirlo?"],
+    ["Fred", "Verás, get{default.player.name}, te han llamado por un caso de última urgencia, han encontrado a un {censorship('cadáver')} en un contenedor detrás de un “bar nocturno”."],
+    ["Fred", "Tiene la cabeza atravesada por dos {censorship('cuchillos')}."],
+    ["get{default.player.name}", "No lo veo muy grave; no me malinterpretes, es grave, pero normalmente alguien me contrata para cosas... Más complicadas."],
+    ["Fred", "No corras, la víctima no tiene ni un sólo {censorship('órgano')}."],
+    ["get{default.player.name}", "Entiendo, es algo más alla. ¿Tenéis algo que me pueda servir? ¿Alguna evidencia?"],
+    ["Fred", "Sí, ponte los guantes."],
+    ["get{default.player.name}", "¿Le habéis hecho fotos?"],
+    ["Jessie", "Sí, creemos que es muerte no natural, pero nos lo revelará el forense mañana, por ahora, investigad lo máximo antes de que se lleven el {censorship('cadáver')}."],
+    ["get{default.player.name}", "(Veo que estos no son demasiado inteligentes)."],
+    ["get{default.player.name}", "Necesito muchísimas fotos, mientras las sacáis voy a mirar en los alrededores, serán unos cinco minutos."],
+    ["get{default.player.name}", "Por cierto, ¿la {censorship('sangre')} estaba seca?"],
+    ["Fred", "No, de hecho aún está algo húmeda."],
+    ["get{default.player.name}", "¿Os importa si cojo una muestra?"],
+    ["Fred", "Naturalmente."],
+    ["get{default.player.name}", "Perfecto."],
+    ["get{default.player.name}", "Sí que está húmeda. Son las ocho de la mañana…"],
+    ["get{default.player.name}", "¿Cuándo fue la última vez que tiraron la basura?"],
+    ["Fred", "La tiran cada día al cerrar, más o menos a las dos de la mañana."],
+    ["get{default.player.name}", "No creo que mientan, la {censorship('sangre')} podría tardar hasta 24 horas en secarse en estas condiciones."],
+    ["get{default.player.name}", "Pronostico que lo habrán {censorship('matado')} hacia las doce de la noche, más o menos."],
+    ["Jessie", "¿Y nadie se dio cuenta hasta las dos?"],
+    ["get{default.player.name}", "Hay dos opciones:"],
+    ["get{default.player.name}", "La primera: Alguien ha encubierto el crimen."],
+    ["get{default.player.name}", "La segunda: A nadie del interior le interesaba salir."],
+    ["Fred", "¿Estaban... amenazados?"],
+    ["get{default.player.name}", "O eran parte de esta {censorship('mierda')}."],
+    ["get{default.player.name}", "Creo que empezaré a mirar los alrededores."],
+    ["Fred", "Te acompaño."],
+    {
+    	".type":"CHOOSE",
+        "Puedo solget{player.gender.o_a}": [
+            ["get{default.player.name}", "Puedo solget{player.gender.o_a}."],
+            ["Fred", "Está bien..."],
+            ["get{default.player.name}", "Parece que el “bar” es algo grande."],
+            ["get{default.player.name}", "Creo que tengo que verlo por dentro."],
+            ["get{default.player.name}", "Parece más pequeño por dentro..."],
+            ["get{default.player.name}", "Veamos el plano del edificio..."],
+            ["get{default.player.name}", "Definitivamente hay algo escondido aquí."],
+            ["get{default.player.name}", "Detrás de la nevera..."],
+            ["get{default.player.name}", "Sí, en la nevera hay un fondo falso. Creo que esto es una entrada secreta..."],
+            ["get{default.player.name}", "Es hora de sacar el arma."],
+            ["get{default.player.name}", "¿Hola?"],
+            ["get{default.player.name}", "No hay nadie... Pero..."],
+            ["get{default.player.name}", ". . ."],
+            ["get{default.player.name}", "Son {censorship('cadáveres')}, un momento..."],
+            ["get{default.player.name}", "No tienen estómago, y tienen cortes muy profundos en la cabeza."],
+            ["get{default.player.name}", "Necesito refuerzos, y tomar el aire. Huele muy mal."]
+        ],
+        "Como quieras": [
+            "!addkey('FredI')",
+            ["get{default.player.name}", "Como quieras."],
+            ["Fred", "Respecto al bar nocturno, era habitado por la gente de este barrio a menudo."],
+            ["get{default.player.name}", "¿Por nadie más?"],
+            ["Fred", "Bueno, la camarera era de otro barrio."],
+            ["get{default.player.name}", "¿Cuál?"],
+            ["Fred", "Vive en la calle de Chirico."],
+            ["Fred", "Espera, ¿Crees que ella es la culpable?"],
+            ["get{default.player.name}", ". . ."],
+            ["Fred", "Vamos, es buena gente..."],
+            ["get{default.player.name}", "Está bien, no tiene por qué estar metida en esto, (supongo)..."],
+            ["???", "Ambos entraron en el establecimiento y get{player.gender.el_la} expertget{player.gender.o_a} detective sin distracciones,— no como su compañero policía.— empezó a buscar pistas."],
+            ["???", "Le dijo a Fred que se pusiera una chaqueta para ocultar su traje de policía."],
+            ["get{default.player.name}", "Con ese traje, la única respuesta que vas a obtener es “vete de aquí” o “no responderé sin un abogado”."],
+            ["Fred", "A mí me parece que intimida a la gente y me dan respuestas más claras."],
+            ["get{default.player.name}", "Sin comentarios..."],
+            ["Fred", "¿Te apetece un Gin tonic?"],
+            ["get{default.player.name}", "Estamos en la escena de un crimen, lo último que tenemos que hacer es contaminarla."],
+            ["???", "A él le daba igual, quería beber algo de {censorship('alcohol')}, y así hizo."],
+            ["get{default.player.name}", "Me he fijado en que hay una pequeña diferencia en el color de la pared alrededor de la nevera..."],
+            ["get{default.player.name}", "Creo que hay algo ahí detrás..."],
+            ["???","Ignorantemente abrió la nevera y empujó el fondo. Detras había una habitación oculta, y no sabían lo que les esperaba..."],
+            ["Fred", "Llama a los refuerzos y diles que entren."],
+            ["get{default.player.name}", "¿Y dejarlos solos?"],
+            ["Fred", "Los pagan para eso."],
+            ["???", "Puede que fuera la primera vez en la que Fred tuviera razón."],
+            ["???", "Respecto a get{player.gender.el_la} detective, estaba empezando a estrechar una relación con Fred."],
+            "!addkey('relationFred1')",
+            ["get{default.player.name}", "Está bien, salgamos de aquí, este sitio me da muy mala espina..."]
+        ]
+    },
+    ["get{default.player.name}", "¿Había algo interesante?"],
+    ["Refuerzos", "Encontramos esto dentro."],
+    ["Jessie", "¿Por qué habría órganos en un frasco de cristal?"],
+    ["get{default.player.name}", "No lo sé, pero está claro que los dueños están metidos en un buen lío..."],
+    ["Jessie", "Por cierto, he oído hablar de tí, me han dicho que eres buenget{player.gender.o_a}, pero me preguntaba..."],
+    ["get{default.player.name}", "¿Sí?"],
+    ["Jessie", "Todos los casos que he oido eran cosas como sociópatas que han asesinado a alguien, pero esto; se sale de control..."],
+    ["get{default.player.name}", "Estoy de acuerdo con que es mi primera vez con un caso tan grande, pero tal vez tengamos suerte y terminemos todos vivos..."],
+    ["Jessie", "Esto no es un chiste... Esto es..."],
+    ["get{default.player.name}", "Una secta; o símplemente una venta ilegal de órganos."],
+    ["???","Llegó el momento. Tenía que irme a casa."],
+    {
+    	".type":"CONDITION",
+    	".condition":"window.player.keys.includes('FredI')",
+        ".true":[
+    		["Fred","Antes de que te vayas... Me preguntaba si quieres... Cenar."],
+    		["get{default.player.name}","¿Contigo?"],
+    		["Fred","Sí."],
+    		{
+    			".type":"CHOOSE",
+    			"Claro":[
+    				["get{default.player.name}","Claro."],
+                    ["Fred","Estupendo. ¿Nos vemos en una hora en CiPASSO?"],
+                    ["get{default.player.name}","Genial."],
+                    ["???","Me arreglé suponiendo que era una cita."],
+                    ["get{default.player.name}","Hola."],
+                    ["Fred","Hola."],
+                    ["???","El brillo de sus ojos me mantuvo encandilado durante toda la cen"],
+                    ["get{default.player.name}","Claro."],
+                    ["get{default.player.name}","Claro."],
+                    ["get{default.player.name}","Claro."],
+                    ["get{default.player.name}","Claro."],
+                    ["get{default.player.name}","Claro."],
+                    ["get{default.player.name}","Claro."],
+                    ["get{default.player.name}","Claro."],
+                    ["get{default.player.name}","Claro."],
+                    ["get{default.player.name}","Claro."],
+                    ["get{default.player.name}","Claro."],
+                    ["get{default.player.name}","Claro."],
+                    ["get{default.player.name}","Claro."],
+                    ["get{default.player.name}","Claro."],
+                    ["get{default.player.name}","Claro."],
+                    "!addkey('FredII')"
+    			],
+    			"No puedo, lo siento":[
+    				["get{default.player.name}","No puedo, lo siento mucho."],
+                    ["Fred","Oh, no pasa nada."],
+                    ["get{default.player.name}","Puede que en otro momendo..."],
+                    ["Fred","Genial."],
+                    ["get{default.player.name}","Pasa una buena noche, debo irme a casa."]
+    			],
+    			"No quiero nada contigo":[
+    				["get{default.player.name}","No quiero nada contigo, somos compañeros de policía, y eso es todo. ¿Lo has entendido?"],
+                    ["Fred","Yo..."],
+                    ["get{default.player.name}","No he pedido tu opinión. Somos compañeros y ya está."],
+                    ["Fred","Claro..."],
+                    ["get{default.player.name}","Me voy a casa, disfruta tu noche."]
+    			]
+    		}
+    	],
+        ".false":[]
+    },
+    ["get{default.player.name}","¡Aquí estás!"],
+    ["get{default.player.name}","Y yo buscando mi teléfono..."],
+    ["get{default.player.name}","No tengo hambre, así que me sobra un rato."],
+    {
+        ".type":"CHOOSE",
+        "Ver la tele":[],
+        "Investigar":[],
+        "Irse a la cama":[]
+    },
+    ["get{default.player.name}","Es tarde, puede que lo mejor sea descansar."],
+    ["???","¿Por qué hablas en tercera persona?"],/*Entrevistador*/
+    ["???","Yo ya no soy get{player.gender.el_ella}."],/*Prota*/
+    ["???","Algo cambió dentro de mí."],/*Prota*/
+    ["???","¿Qué pasó?"],/*Entrevistador*/
+    ["???","Lo ví."],/*Prota*/
+    ["???","..."],/*Entrevistador*/
+    ["???","Continuemos..."],/*Entrevistador*/
+    ["???","Día 2"],
+    ["get{default.player.name}","Antes de investigar, quiero hacer algo."],
+    {
+        ".type":"CHOOSE",
+        "Llamar a Matt":[
+            ["get{default.player.name}","Hola, Matt."],
+            ["Matt","Hola, get{default.player.name}. ¿Qué tal andas?"],
+            ["get{default.player.name}","Bien, ya sabes."],
+            ["Matt","¿Sigues trabajando en eso de la investigación?"],
+            ["get{default.player.name}","Sí, ahora estoy con un caso de robo de órganos, parece ser interesante, y..."],
+            ["Matt","Oye, no estoy para escuchar de nuevo tus historias. ¿Acaso no te das cuenta del daño que te está haciendo tu trabajo?"],
+            ["get{default.player.name}","Matt, no voy a volver a tener esa conversación, ya hablamos todo lo que necesitabamos hablar."],
+            ["Matt","Me preocupo por tí."],
+            ["get{default.player.name}","¿También estabas preocupado esas noches en las que andabas con tus amigos?"],
+            ["Matt","Solo eran..."],
+            ["get{default.player.name}","Te vi con Katie."],
+            ["Matt","..."],
+            ["Matt","Ya sabes que..."],
+            ["get{default.player.name}","No hacen falta explicaciones: hablamos, lo dejamos y cada uno con lo suyo, todo perfecto."],
+            ["Matt","Claro, ¿Siempre es perfecto para tí, no?"],
+            ["get{default.player.name}","¿Qué quieres decir?"],
+            ["Matt","Una persona astuta, experta en psicología y con una fama tan alta que es contratada por la policía para los casos más difíciles de la élite, y mientras tanto los demás nos conformamos con nuestras vidas: insignificántes para tí."],
+            ["get{default.player.name}","Oye, siento que no tengas la capacidad de alegrarte por mí, porque por lo menos me preocupaba de cómo iba tu día cada vez que tenía la oportunidad de preguntarte."],
+            ["Matt","Yo no lo hacía; sabía que de todos modos tendrías una vida perfecta."],
+            ["get{default.player.name}","Te pareces a Nicole."],
+            ["Matt","Tu primera ex: tu primera víctima."],
+            ["Matt","¿Te has fijado en los demás? Tengo amigos, familia y hobbies. ¿Qué tienes tú?"],
+            ["get{default.player.name}","..."],
+            ["Matt","No eres rico, no tienes familia ni amigos. Tienes un trabajo que consiste en ariesgar tu vida en psicópatas fuera de regla, y haces como si eso te llenara."],
+            ["get{default.player.name}","Soy lo suficientemente inteligente como para darme cuenta de que no necesito el resto: no necesito dinero, familia ni amigos, porque la experiancia de trabajar con la policía y de ayudarles me hace sentirme realizadget{player.gender.o_a}."],
+            ["Matt","Oh, por favor, qué humilde..."],
+            ["get{default.player.name}","Te odio."],
+            ["Matt","Cuando cobres tu último caso con la policía te denunciaré, y me quedaré con todo. No vas a tener dinero para pagar si quiera un motel. Te voy a destruir."],
+            ["???","Colgé la llamada. No era la primera vez que me hablaba así, pero sí la que se ponía tan agresivo... De todos modos, tenía que volver a mi día a día."]
+        ],
+        "Preparar café":[
+            ["get{default.player.name}","Un café me vendría bien."],
+            ["???","Tras tomarme el café continué con mi vida cotidiana, como si nada estuviera pasando."]
+        ]
+    },
+    {
+        ".type":"CONDITION",
+        ".condition":"window.player.keys.includes('FredII')",
+        ".true":[
+            {
+                ".type":"CHOOSE",
+                "Llamar a Fred":[
+                    "!addkey('FredIII')",
+                    ["get{default.player.name}","Me encantaría seguir hablando, Fred, pero tengo que investigar más. Adiós."],
+                    ["Fred","Adiós."]
+                ],
+                "Salir a correr":[]
+            }
+        ],
+        ".false":[]
+    },
+    {  
+        ".type":"CONDITION",
+        ".condition":"!window.player.keys.includes('FredIII')",
+        ".true":[
+            ["get{default.player.name}","Salir a correr es lo más sano."],
+            ["???","Tras un buen paseo, entré en mi ordenador y empezé a trabajar."]
+        ],
+        ".false":[]
+    }
+]

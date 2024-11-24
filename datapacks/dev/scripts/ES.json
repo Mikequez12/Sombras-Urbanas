@@ -1,0 +1,13 @@
+[
+    "!background('placeholder.jpg')",
+    ["get{default.player.gender}","get{default.player.name}"],
+    {
+        ".type":"CHOOSE",
+        "Opción 1":[
+            ["","1"]
+        ],
+        "Opción 2":[
+            ["","2"]
+        ]
+    }
+]
