@@ -1,13 +1,11 @@
 window.player = {}
 window.player.keys = [];
 
-document.addEventListener('DOMContentLoaded',function() {
-	document.app = document.querySelector('app');
-	document.querySelector('app').style.backgroundImage = 'url("default.bg.webp")';
-	document.querySelectorAll('h1-title').forEach((l) => {
-		l.innerHTML = `<h1>${Array.from(l.innerText).map((v) => `<span>${v}</span>`).join('')}</h1>`;
-	});
-});
+
+
+document.addEventListener('DOMContentLoaded',function() { document.app = document.querySelector('app') })
+
+
 
 function new_game(event) {
 	document.querySelector('.menu-config').innerHTML = `
@@ -56,12 +54,16 @@ async function start_game(event) {
 		<button class='cancel'>✖</button>
 		<h1 style='margin:10px;'>${config.title}</h1>
 		<div style='display:flex'>
-			<div style='display:flex;width:100%;'>
-				<img style='width:70%;margin:auto;border-radius: 10px;box-shadow: 0 5px 15px 10px rgb(0 0 0 / 60%);'src='${window.game.url}/icon.ico' alt='icon'>
+			<div style='width:100%;margin:auto;'>
+				<div style='display:block;text-align:center;'>
+					<h3>Recommended age <span title='This age rating is determined by the creator. We are not responsible for any language content included, even when censorship is applied.' id='rating'>+${config.rating===undefined?'0':config.rating}</span></h3>
+					<img style='width:70%;margin:auto;border-radius: 10px;box-shadow: 0 5px 15px 10px rgb(0 0 0 / 60%);'src='${window.game.url}/icon.ico' alt='icon'>
+					<div style='height:30px;display:block'></div>
+					<button id='create_game' class='inverted' style='margin:auto;padding:15px;width:200px'>Create game</button>
+				</div>
 			</div>
 			<div style='width:100%;'>
-				<h2>Configuration</h2>
-				<h3>Language</h3>
+				<h2>Language</h3>
 				<div style='display:flex;'>
 					<select style='margin:auto;min-width:250px;' id='lang'>
 						${
@@ -69,18 +71,15 @@ async function start_game(event) {
 						}
 					</select>
 				</div>
-				<h3>Restrictions</h3>
+				<h2>Restrictions</h2>
 				<div style="text-align:center;">Censor<input id='censor' style='margin-left:15px;transform:scale(1.5)' type="checkbox"/></div>
-				<h3>Player name</h3>
+				<h2>Player name</h2>
 				<p style="text-align:center;"><input id='player_name' /></p>
-				<h3>Sex</h3>
+				<h2>Sex</h2>
 				<p style="text-align:center;"><select id='player_gender'><option>Male</option><option>Female</option></select></p>
 			</div>
 		</div>
 		<br>
-		<div style='display:flex'>
-			<button id='create_game' class='inverted' style='margin:auto;padding:15px;width:200px'>Create game</button>
-		</div>
 		`
 		toplevel.querySelector('#create_game').addEventListener('click',create_game);
 		toplevel.querySelector('.cancel').addEventListener('click',cancel_start_game);
@@ -156,18 +155,25 @@ async function read_script() {
 		let text_container = document.querySelector('.txt-container');
 		text_container.innerText = '';
 
+		said = line[1];
+
 		for (let i = 0; i < line[1].length; i++) {
-			setTimeout(function() {
-				text_container.innerText = `${text_container.innerText}${line[1][i]===' '?'\u00A0':line[1][i]}`;
+			let timeout = setTimeout(() => {
+				text_container.textContent = `${text_container.textContent}${line[1][i]}`;
 			},i*30);
+			timeouts.push(timeout);
 		};
 		window.line++;
-		setTimeout(function() {
+		timeout_end = setTimeout(function() {
 			next_button.classList.remove('disabled');
 			script_readed = true;
 		},line[1].length*30+60)
 	}
 }
+
+var said = null;
+var timeouts = [];
+var timeout_end = null;
 
 function cancel_start_game(event) {
 	if (event !== false) {
@@ -193,13 +199,13 @@ async function create_game(event) {
 	};
 	document.app.style.backgroundImage = 'none';
 
-	let toplevel = event.target.parentElement.parentElement;
+	let toplevel = event.target.parentElement.parentElement.parentElement.parentElement;
 	document.app.querySelectorAll('*').forEach((t) => {t.remove()});
-	let lang = config.langs[event.target.parentElement.parentElement.querySelector('#lang').value];
+	let lang = config.langs[event.target.parentElement.parentElement.parentElement.querySelector('div>#lang').value];
 	toplevel.remove();
 
 	var script = await get_game_file(`scripts/${lang}.json`);
-	script = script.replace(/\/\*.*?\*\//g, ""); // Elimina comentarios
+	script = script.replace(/\/\*.*?\*\//g, ""); // Elimina comentarios /**/
 	script = JSON.parse(script);
 	window.game.script = script;
 
@@ -219,7 +225,13 @@ async function create_game(event) {
 	let btn = document.app.appendChild(document.createElement('next-button'));
 	btn.classList.add('nxt-btn');
 	btn.classList.add('disabled');
-	btn.addEventListener('click',async function() {await read_script()})
+	btn.addEventListener('click',async function() {await read_script()});
+
+	let topbar = document.app.appendChild(document.createElement('div'));
+	topbar.classList.add('topbar');
+
+	let save = topbar.appendChild(document.createElement('menubtn'));
+	save.classList.add('save');
 
 	document.app.style.opacity = '1';
 	document.app.style.filter = '';
@@ -234,6 +246,13 @@ document.addEventListener('keydown',async function(event) {
 	if (event.key==='Enter') {
 		if (script_readed === true) {
 			await read_script()
+		} else {
+			timeouts.forEach((t) => { clearTimeout(t) });
+			document.querySelector('.txt-container').textContent = said;
+
+			clearTimeout(timeout_end);
+			document.querySelector('.nxt-btn').classList.remove('disabled');
+			script_readed = true;
 		}
 	}
 });

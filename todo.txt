@@ -1,5 +1,41 @@
-1. Poder hacer skip (o hacer que puedas continuar con espacio o enter)
-	Parte 1                                 [HECHO]
-	Hacer el texto más rápido opcionalmente [     ]
+1. Poder hacer skip (o hacer que puedas continuar con espacio o enter)    [HECHO]
 
-2. Haz más fácil el sistema de condiciones
+2. Haz el menú                                                            [     ]
+	- Haz el botón de guardar                                             (     )
+		- Haz la imágen                                                   {HECHO}
+		- Haz la función de guardar la partida                            {     }
+
+
+async function saveFile() {
+  // Verifica si la API de archivos del sistema está disponible
+  if ('showSaveFilePicker' in window) {
+    try {
+      // Muestra un cuadro de diálogo para elegir un archivo
+      const handle = await window.showSaveFilePicker({
+        suggestedName: 'mi_archivo.txt', // Nombre sugerido para el archivo
+        types: [{
+          description: 'Text files',
+          accept: {'text/plain': ['.txt']}
+        }],
+      });
+
+      // Crea un archivo con el contenido
+      const fileStream = await handle.createWritable();
+      await fileStream.write('Este es el contenido del archivo');
+      await fileStream.close();
+
+      console.log('Archivo guardado exitosamente');
+    } catch (err) {
+      console.error('Error al guardar el archivo:', err);
+    }
+  } else {
+    console.error('La API de Acceso al Sistema de Archivos no es compatible con tu navegador');
+  }
+}
+
+
+3. Hacer bien el \n                                                       [HECHO]
+
+4. Añade el rate de edad (como +18 ej.)                                   [HECHO]
+
+5. Haz el load game                                                       <     >
