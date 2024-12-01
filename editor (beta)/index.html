@@ -1,0 +1,128 @@
+<style>
+	:root {
+		--hue: 100deg;
+	}
+
+	body {
+		background: #111;
+		color: white;
+		width: calc(100% - 30px);
+	}
+
+	p {
+		margin: 0;
+		border-radius: 3px;
+		padding-left: 10px;
+		margin-left: 20px;
+		margin-bottom: 5px;
+		color: white;
+		width: calc(100% - 22px);
+		background: hsla(var(--hue), 90%, 70%, .1);
+		position: relative;
+		--text: '?';
+		box-sizing: border-box;
+	}
+
+	p::before {
+		position: absolute;
+		left: 0;
+		transform: translateX(-10px);
+		color: hsl(var(--hue), 90%, 30%);
+		font-weight: bold;
+		font-size: 13px;
+		width: 15px;
+		height: 100%;
+		background: white;
+		text-align: center !important;
+		border-left: solid 3px white;
+		border-right: solid 3px white;
+		border-radius: 5px 0 0 5px;
+		content: var(--text);
+	}
+
+	span {
+		display: flex;
+		width: 100%;
+		position: relative;
+	}
+
+	input {
+		background: transparent;
+		border: none;
+		color: white;
+		outline: none;
+		box-sizing: border-box;
+	}
+
+	label {
+		color: white !important;
+		font-weight: bold;
+		position: relative;
+		padding-left: 10px;
+	}
+</style>
+
+<title>Scriptorium - editor</title>
+
+<script>
+	async function get_script(file) {
+	    try {
+	        const response = await fetch(`${file}`, { mode: 'cors' });
+
+	        if (!response.ok) {
+	            throw new Error('ERROR IN RESPONSE');
+	        }
+
+	        const data = await response.text();
+	        return data;
+	    } catch (error) {
+	        throw new Error('Error fetching the file: ' + error);
+	    }
+	};
+
+	async function main() {
+		let json = await get_script('http://localhost:8000/vanilla/scripts/ES.json');
+		json = JSON.parse(json.replace(/\/\*.*?\*\//g, ""));
+		
+		function explore(data, parent) {
+			console.log(data);
+			data.forEach((line) => {
+				let element = parent.appendChild(document.createElement('p'));
+				if (Array.isArray(line)) {
+					let flex = element.appendChild(document.createElement('span'));
+					let b = flex.appendChild(document.createElement('input'));
+					b.value = line[0];
+					b.style.paddingLeft = '10px';
+					let a = flex.appendChild(document.createElement('input'));
+					a.value = line[1];
+					a.style.width = '100% !important';
+					a.style.overflow = 'scroll';
+					
+					element.style.setProperty('--text', '"💬"');
+				} else if (typeof line === 'string') {
+					let a = element.appendChild(document.createElement('input'));
+					a.value = line;
+					a.style.width = '100% !important';
+					a.style.paddingLeft = '10px';
+
+					element.style.setProperty('--text', '"⌨️"');
+				} else if (typeof line === 'object') {
+					for (let [k, v] of Object.entries(line)) {
+						let opt = element.appendChild(document.createElement('label'));
+						element.style.setProperty('--text', '"⚙️"');
+						opt.innerText = k;
+						opt.style.paddingLeft = '10px';
+						console.log('v', v);
+						explore(Array.isArray(v) ? [...v] : [v], element);
+					}
+				}
+			});
+		};
+
+		explore(json, document.body);
+	}
+
+	document.addEventListener('DOMContentLoaded', function() {
+		main();
+	});
+</script>
