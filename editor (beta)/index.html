@@ -115,7 +115,7 @@
 	};
 
 	async function main() {
-		let json = await get_script('http://localhost:8000/vanilla/scripts/ES.json');
+		let json = await get_script(window.location.href.split('#').slice(1).join('#')+'/scripts/ES.json');
 		json = JSON.parse(json.replace(/\/\*.*?\*\//g, ""));
 		
 		function explore(data, parent) {
