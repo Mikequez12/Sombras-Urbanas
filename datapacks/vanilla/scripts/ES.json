@@ -15,7 +15,7 @@
         ]
     },
     ["???", "Un golpe, un grito ahogado de dolor en la distancia, y después, silencio absoluto."],
-    ["???", "Día 1."],
+    ["???", "Día 1"],
     ["get{default.player.name}", "¡¿En serio, pongo la televisión y me llaman?!"],
     ["get{default.player.name}", "Puf…"],
     ["get{default.player.name}", "¿Sí?"],
@@ -49,7 +49,7 @@
     ["Fred", "La tiran cada día al cerrar, más o menos a las dos de la mañana."],
     ["get{default.player.name}", "No creo que mientan, la {censorship('sangre')} podría tardar hasta 24 horas en secarse en estas condiciones."],
     ["get{default.player.name}", "Pronostico que lo habrán {censorship('matado')} hacia las doce de la noche, más o menos."],
-    ["Jessie", "¿Y nadie se dio cuenta hasta las dos?"],
+    ["Jessie", "¿Y nadie se dio cuenta de que había un cadaver hasta las dos?"],
     ["get{default.player.name}", "Hay dos opciones:"],
     ["get{default.player.name}", "La primera: Alguien ha encubierto el crimen."],
     ["get{default.player.name}", "La segunda: A nadie del interior le interesaba salir."],

@@ -39,3 +39,5 @@ async function saveFile() {
 4. Añade el rate de edad (como +18 ej.)                                   [HECHO]
 
 5. Haz el load game                                                       <     >
+
+X. Haz el editor                                                      < = >     < = >

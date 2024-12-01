@@ -8,16 +8,37 @@ html {
     margin: 0;
 }
 
-body {
-	width: 100%;
-	height: 100%;
-	margin: 0;
-	background: black;
-}
+
 
 body {
 	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	margin: 0;
+	background-color: black; /* Para que resalte el "app" */
 }
+
+app {
+	color: white;
+	background: url('default.bg.webp') no-repeat center center;
+	background-size: cover;
+	width: 100vw;
+	height: calc(100vw * 9 / 16); /* Ahora con operación válida */
+	display: block;
+	position: relative;
+}
+
+/* Para evitar que el contenedor sea más alto que la pantalla en dispositivos estrechos */
+@media (max-aspect-ratio: 16/9) {
+	app {
+		width: calc(100vh * 16 / 9);
+		height: 100vh;
+	}
+}
+
+
+
 
 * {
 	font-family: "Zen Antique Soft", sans-serif;
@@ -142,17 +163,6 @@ h1,h2,h3,h4,#scriptorium>span {
 		0 0 25px white,
 		0 0 20px white,
 		0 0 15px white;
-}
-
-app {
-	color: white;
-	background: url('default.bg.webp');
-	background-size: cover;
-	width: 100vw;
-	height: calc(9/16*100vw);
-	margin: auto;
-	display: block;
-	position: relative;
 }
 
 button {
@@ -332,6 +342,7 @@ option {
     width: 70%;
     left: 15%;
     top: 10px;
+    z-index: 100;
 }
 
 button.choice, button.choice > span {

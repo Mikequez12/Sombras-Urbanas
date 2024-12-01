@@ -1,68 +1,102 @@
 <style>
-	:root {
-		--hue: 100deg;
-	}
-
 	body {
-		background: #111;
-		color: white;
-		width: calc(100% - 30px);
-	}
-
-	p {
 		margin: 0;
-		border-radius: 3px;
-		padding-left: 10px;
-		margin-left: 20px;
-		margin-bottom: 5px;
+		overflow: hidden;
+		background: url('../default.bg.webp');
+	}
+	.block {
 		color: white;
-		width: calc(100% - 22px);
-		background: hsla(var(--hue), 90%, 70%, .1);
-		position: relative;
-		--text: '?';
-		box-sizing: border-box;
+		border-radius: 5px;
+		display: inline-block;
+		margin: auto 10px;
+		background: #555;
+		box-shadow:
+			inset 0 5px 5px 0 rgba(255, 255, 255, .1),
+			inset 0 -5px 5px 0 rgba(0, 0, 0, .5);
+		vertical-align: middle;
 	}
-
-	p::before {
-		position: absolute;
-		left: 0;
-		transform: translateX(-10px);
-		color: hsl(var(--hue), 90%, 30%);
-		font-weight: bold;
-		font-size: 13px;
-		width: 15px;
-		height: 100%;
-		background: white;
-		text-align: center !important;
-		border-left: solid 3px white;
-		border-right: solid 3px white;
-		border-radius: 5px 0 0 5px;
-		content: var(--text);
-	}
-
-	span {
-		display: flex;
-		width: 100%;
-		position: relative;
-	}
-
 	input {
-		background: transparent;
 		border: none;
 		color: white;
+		background: #555;
+		box-shadow:
+			0 3px 3px 0 rgba(255, 255, 255, .1),
+			0 -3px 3px 0 rgba(0, 0, 0, .5);
+		border-radius: 5px;
+		padding: 5px;
 		outline: none;
-		box-sizing: border-box;
 	}
-
-	label {
-		color: white !important;
-		font-weight: bold;
-		position: relative;
-		padding-left: 10px;
+	.block > * {
+		margin: 7.5px;
 	}
+	.block > span {
+		text-align: center;
+		display: block;
+	}
+	.block > input {
+		display: block;
+	}
+	#editor {
+		left: 5px;
+		bottom: 5px;
+		border-radius: 5px;
+		overflow-x: scroll;
+		position: absolute;
+		white-space: nowrap;
+		background: #000000a0;
+		display: flex;
+		overflow-y: hidden;
+		height: calc(100% - 70px);
+		width: calc(100% - 10px);
+	}
+	.topbar {
+		width: calc(100% - 10px);
+		position: absolute;
+		left: 5px;
+		top: 5px;
+		border-radius: 5px;
+		display: flex;
+	}
+	.topbar > button {
+		width: 100%;
+		padding: 20px;
+		border: none;
+		outline: none;
+		background: #000000a0;
+		color: white;
+		transition: all .5s ease;
+	}
+	.topbar > button:last-child {
+		border-radius: 0 5px 5px 0;
+	}
+	.topbar > button:first-child {
+		border-radius: 5px 0 0 5px;
+	}
+	.topbar > button:hover {
+		background: #ffffff50;
+	}
+	table > tr {
+		display: block;
+		margin: 20px 0;
+		white-space: nowrap;
+	}
+	table > tr::before { color:white;min-width:30px;display:inline-block;text-align:right; }
+	table > tr.true::before { content: 'True' }
+	table > tr.false::before { content: 'False' }
 </style>
 
 <title>Scriptorium - editor</title>
+
+<div class='topbar'>
+	<button>Project configuration</button>
+	<button>Save</button>
+	<button>Save as</button>
+	<button>Open</button>
+	<button>Help</button>
+	<button>Contact</button>
+</div>
+
+<div id='editor'></div>
 
 <script>
 	async function get_script(file) {
@@ -87,39 +121,41 @@
 		function explore(data, parent) {
 			console.log(data);
 			data.forEach((line) => {
-				let element = parent.appendChild(document.createElement('p'));
-				if (Array.isArray(line)) {
-					let flex = element.appendChild(document.createElement('span'));
-					let b = flex.appendChild(document.createElement('input'));
-					b.value = line[0];
-					b.style.paddingLeft = '10px';
-					let a = flex.appendChild(document.createElement('input'));
-					a.value = line[1];
-					a.style.width = '100% !important';
-					a.style.overflow = 'scroll';
-					
-					element.style.setProperty('--text', '"💬"');
-				} else if (typeof line === 'string') {
-					let a = element.appendChild(document.createElement('input'));
-					a.value = line;
-					a.style.width = '100% !important';
-					a.style.paddingLeft = '10px';
+				const type = Array.isArray(line)?'Tell':typeof line === typeof ''?'Command':line['.type']==='CONDITION'?'Condition':line['.type']==='CHOOSE'?'Choose':'UNKNOWN';
 
-					element.style.setProperty('--text', '"⌨️"');
-				} else if (typeof line === 'object') {
-					for (let [k, v] of Object.entries(line)) {
-						let opt = element.appendChild(document.createElement('label'));
-						element.style.setProperty('--text', '"⚙️"');
-						opt.innerText = k;
-						opt.style.paddingLeft = '10px';
-						console.log('v', v);
-						explore(Array.isArray(v) ? [...v] : [v], element);
-					}
+				let div = parent.appendChild(document.createElement('div'));
+				div.classList.add('block');
+				let title = div.appendChild(document.createElement('span'));
+				title.textContent = type;
+				if (type === 'Command') {
+					let v1 = div.appendChild(document.createElement('input'));
+					v1.value = line;
+					v1.placeholder = 'Command...'
+				} else if (type === 'Tell') {
+					let v1 = div.appendChild(document.createElement('input'));
+					v1.placeholder = 'Character...';
+					let v2 = div.appendChild(document.createElement('input'));
+					v2.placeholder = 'Text...';
+					v1.value = line[0];
+					v2.value = line[1];
+				} else if (type === 'Condition') {
+					let condition = div.appendChild(document.createElement('input'));
+					condition.value = line['.condition'];
+					condition.style.width = 'calc(100% - 35px)';
+					condition.style.marginLeft = '20px';
+					condition.style.textAlign = 'center';
+					let table = div.appendChild(document.createElement('table'));
+					let _TRUE = table.appendChild(document.createElement('tr'));
+					_TRUE.classList.add('true');
+					explore(line['.true'],_TRUE);
+					let _FALSE = table.appendChild(document.createElement('tr'));
+					_FALSE.classList.add('false');
+					explore(line['.false'],_FALSE);
 				}
 			});
 		};
 
-		explore(json, document.body);
+		explore(json, document.querySelector('#editor'));
 	}
 
 	document.addEventListener('DOMContentLoaded', function() {
