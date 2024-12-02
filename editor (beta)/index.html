@@ -83,6 +83,7 @@
 	table > tr::before { color:white;min-width:30px;display:inline-block;text-align:right; }
 	table > tr.true::before { content: 'True' }
 	table > tr.false::before { content: 'False' }
+	table > tr.customtext::before { content: attr(text)	}
 </style>
 
 <title>Scriptorium - editor</title>
@@ -151,8 +152,12 @@
 					_FALSE.classList.add('false');
 					explore(line['.false'],_FALSE);
 				} else if (type === 'Choose') {
+					let table = div.appendChild(document.createElement('table'));
 					for (const [k,v] of Object.entries(line)) {
-						console.log(k,v);
+						let opt = table.appendChild(document.createElement('tr'));
+						opt.classList.add('customtext');
+						opt.setAttribute('text',k);
+						explore(v,opt);
 					}
 				}
 			});
