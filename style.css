@@ -20,23 +20,14 @@ body {
 }
 
 app {
-	color: white;
-	background: url('default.bg.webp') no-repeat center center;
-	background-size: cover;
-	width: 100vw;
-	height: calc(100vw * 9 / 16); /* Ahora con operación válida */
-	display: block;
-	position: relative;
+    color: white;
+    background: url(default.bg.webp) no-repeat center center;
+    background-size: cover;
+    width: 100vw;
+    height: calc(100vw / 16* 9);
+    display: block;
+    position: relative;
 }
-
-/* Para evitar que el contenedor sea más alto que la pantalla en dispositivos estrechos */
-@media (max-aspect-ratio: 16/9) {
-	app {
-		width: calc(100vh * 16 / 9);
-		height: 100vh;
-	}
-}
-
 
 
 
