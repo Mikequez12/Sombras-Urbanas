@@ -221,18 +221,18 @@ credits {
 
 
 .toplevel {
-	color: white;
-	position: fixed;
-	margin: auto;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
-	background: #000000a0;
-	border-radius: 15px;
-	backdrop-filter: blur(10px);
-	height: calc(9/16*100vw - 40px) !important;
-	width: 60%;
+    color: white;
+    position: fixed;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #000000a0;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    height: 80vh !important;
+    width: 60%;
 }
 
 .cancel {
