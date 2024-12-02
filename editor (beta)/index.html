@@ -155,6 +155,7 @@
 				} else if (type === 'Choose') {
 					let table = div.appendChild(document.createElement('table'));
 					for (const [k,v] of Object.entries(line)) {
+						if (k === '.type') { continue; }
 						let opt = table.appendChild(document.createElement('tr'));
 						opt.classList.add('customtext');
 						opt.setAttribute('text',k);
