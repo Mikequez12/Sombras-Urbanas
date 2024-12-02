@@ -120,6 +120,7 @@
 		json = JSON.parse(json.replace(/\/\*.*?\*\//g, ""));
 		
 		function explore(data, parent) {
+			console.log(data);
 			data.forEach((line) => {
 				const type = Array.isArray(line)?'Tell':typeof line === typeof ''?'Command':line['.type']==='CONDITION'?'Condition':line['.type']==='CHOOSE'?'Choose':'UNKNOWN';
 
