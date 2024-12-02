@@ -63,20 +63,28 @@ async function start_game(event) {
 				</div>
 			</div>
 			<div style='width:100%;'>
-				<h2>Language</h3>
-				<div style='display:flex;'>
-					<select style='margin:auto;min-width:250px;' id='lang'>
-						${
-							Object.keys(config.langs).map(v => `<option style='color:black;border-radius:5px;'>${v}</option>`).join('')
-						}
-					</select>
+				<div>
+					<h2>Language</h3>
+					<div style='display:flex;'>
+						<select style='margin:auto;min-width:250px;' id='lang'>
+							${
+								Object.keys(config.langs).map(v => `<option style='color:black;border-radius:5px;'>${v}</option>`).join('')
+							}
+						</select>
+					</div>
 				</div>
-				<h2>Restrictions</h2>
-				<div style="text-align:center;">Censor<input id='censor' style='margin-left:15px;transform:scale(1.5)' type="checkbox"/></div>
-				<h2>Player name</h2>
-				<p style="text-align:center;"><input id='player_name' /></p>
-				<h2>Sex</h2>
-				<p style="text-align:center;"><select id='player_gender'><option>Male</option><option>Female</option></select></p>
+				<div>
+					<h2>Restrictions</h2>
+					<div style="text-align:center;">Censor<input id='censor' style='margin-left:15px;transform:scale(1.5)' type="checkbox"/></div>
+				</div>
+				<div>
+					<h2>Player name</h2>
+					<p style="text-align:center;"><input id='player_name' /></p>
+				</div>
+				<div>
+					<h2>Sex</h2>
+					<p style="text-align:center;"><select id='player_gender'><option>Male</option><option>Female</option></select></p>
+				</div>
 			</div>
 		</div>
 		<br>
