@@ -236,7 +236,7 @@ credits {
 }
 
 .cancel {
-	background: transparent; !important;
+	background: transparent !important;
 	right: -20px;
 	top: -40px;
 	font-size: 35px;
