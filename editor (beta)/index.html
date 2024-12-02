@@ -151,6 +151,10 @@
 					let _FALSE = table.appendChild(document.createElement('tr'));
 					_FALSE.classList.add('false');
 					explore(line['.false'],_FALSE);
+				} else if (type === 'Choose') {
+					for (const [k,v] of Object.entries(line)) {
+						console.log(k,v);
+					}
 				}
 			});
 		};
