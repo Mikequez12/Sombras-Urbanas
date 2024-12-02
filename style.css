@@ -23,8 +23,8 @@ app {
     color: white;
     background: url(default.bg.webp) no-repeat center center;
     background-size: cover;
-    width: 100vw;
-    height: calc(100vw / 16* 9);
+    width: calc(100vh* 16 / 9);
+    height: 100vh;
     display: block;
     position: relative;
 }
